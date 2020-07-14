@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/mystyle36.css">
+</head>
+<body>
+    <label>String:</label>
+    <input type="text" id="string"><br>
+    <button id="btn1"onclick="fn()">Filter By Name</button>
+    <button id="btn2"onclick="ft()">Filter By Technology</button>
+    <div id="display"></div>
+</body>
+<script>
+    var persons=[{"name":"Jack","tech":"Android"},
+    {"name":"Mary","tech":"React"},
+    {"name":"Bob","tech":"Angular"},
+    {"name":"Steve","tech":"Spring"},
+    {"name":"James","tech":"Android"},
+    {"name":"Julia","tech":"Android"},
+    {"name":"Michel","tech":"React"},
+    {"name":"Bill","tech":"Angular"},
+    {"name":"Sonny","tech":"Spring"},
+    {"name":"Martins","tech":"React"},
+    {"name":"Bruce","tech":"Angular"},{"name":"Sam","tech":"Spring"}]
+    show();
+    function show()
+    {
+        var str="";
+        for(i=0;i<persons.length;i++)
+        {var pr=persons[i];
+            var p1="<div class='cell'>"+pr.name+"</div>";
+            var p2="<div class='cell'>"+pr.tech+"</div>";
+            var row="<div>"+p1+p2+"</div>";
+            str=str+row;
+        }
+        var table=document.getElementById("display");
+        table.innerHTML=str;
+    }
+    function fn()
+    {
+       var string= document.getElementById("string").value;
+        var ne=persons.filter(n=>check(n,string));
+        function check(n,string)
+        {var fl=-1
+            for(i=0;i<string.length;i++)
+            {
+                if(n.name.charAt(i)!=string.charAt(i))
+                {
+                    fl=1;
+                }
+              
+            }
+            if(fl==-1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }console.log(ne);
+        show1();
+        function show1()
+         {
+        var str="";
+        for(i=0;i<ne.length;i++)
+        {
+            var p1="<div class='cell'>"+ne[i].name+"</div>";
+            var p2="<div class='cell'>"+ne[i].tech+"</div>";
+            var row="<div>"+p1+p2+"</div>";
+            str=str+row;
+        }
+        var table=document.getElementById("display");
+        table.innerHTML=str;
+    }}
+    function ft()
+    {
+       var string= document.getElementById("string").value;
+        var nt=persons.filter(n=>check(n,string));
+        function check(n,string)
+        {var fl=-1
+            for(i=0;i<string.length;i++)
+            {
+                if(n.tech.charAt(i)!=string.charAt(i))
+                {
+                    fl=1;
+                }
+              
+            }
+            if(fl==-1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }console.log(nt);
+        show2();
+        function show2()
+         {
+        var str="";
+        for(i=0;i<nt.length;i++)
+        {
+            var p1="<div class='cell'>"+nt[i].name+"</div>";
+            var p2="<div class='cell'>"+nt[i].tech+"</div>";
+            var row="<div>"+p1+p2+"</div>";
+            str=str+row;
+        }
+        var table=document.getElementById("display");
+        table.innerHTML=str;
+    }
+    }
+
+</script>
+</html>
